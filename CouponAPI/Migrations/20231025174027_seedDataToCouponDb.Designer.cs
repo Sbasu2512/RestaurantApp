@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CouponAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231025172054_AddCouponToDb")]
-    partial class AddCouponToDb
+    [Migration("20231025174027_seedDataToCouponDb")]
+    partial class seedDataToCouponDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,43 @@ namespace CouponAPI.Migrations
                     b.HasKey("CouponId");
 
                     b.ToTable("Coupons");
+
+                    b.HasData(
+                        new
+                        {
+                            CouponId = 1,
+                            CouponCode = "05%OFF",
+                            DiscountAmount = 5.0,
+                            MinAmount = 5
+                        },
+                        new
+                        {
+                            CouponId = 2,
+                            CouponCode = "10%OFF",
+                            DiscountAmount = 10.0,
+                            MinAmount = 10
+                        },
+                        new
+                        {
+                            CouponId = 3,
+                            CouponCode = "15%OFF",
+                            DiscountAmount = 15.0,
+                            MinAmount = 15
+                        },
+                        new
+                        {
+                            CouponId = 4,
+                            CouponCode = "20%OFF",
+                            DiscountAmount = 20.0,
+                            MinAmount = 20
+                        },
+                        new
+                        {
+                            CouponId = 5,
+                            CouponCode = "25%OFF",
+                            DiscountAmount = 25.0,
+                            MinAmount = 25
+                        });
                 });
 #pragma warning restore 612, 618
         }
