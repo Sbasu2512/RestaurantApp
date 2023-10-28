@@ -45,7 +45,12 @@ namespace CouponAPI.Controllers
         {
             try
             {
-                Coupon obj = _db.Coupons.First(u => u.CouponId == id);
+                Coupon obj = _db.Coupons.FirstOrDefault(u => u.CouponId == id);
+                if(obj == null)
+                {
+                    _response.IsSuccess=false;
+                    _response.Message = "Not a valid Coupon";
+                }
                 _response.Result = _mapper.Map<CouponDto>(obj);
             }
             catch (Exception ex)
@@ -73,7 +78,7 @@ namespace CouponAPI.Controllers
             return _response;
         }
 
-
+        //create a new coupon
         [HttpPost]
         public ResponseDto Post([FromBody] CouponDto couponDto)
         {
@@ -95,6 +100,7 @@ namespace CouponAPI.Controllers
             return _response;
         }
 
+        //Edit a coupon
         [HttpPut]
         public ResponseDto put([FromBody] CouponDto couponDto)
         {
@@ -115,6 +121,7 @@ namespace CouponAPI.Controllers
             return _response;
         }
 
+        //Delete a coupon
         [HttpDelete]
         public ResponseDto delete(int id)
         {
