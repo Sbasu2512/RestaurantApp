@@ -14,7 +14,7 @@ namespace CouponAPI.Controllers
     {
         private readonly AppDbContext _db;
         private readonly ResponseDto _response;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public CouponAPIController(AppDbContext db, IMapper mapper)
         {
@@ -102,7 +102,7 @@ namespace CouponAPI.Controllers
 
         //Edit a coupon
         [HttpPut]
-        public ResponseDto put([FromBody] CouponDto couponDto)
+        public ResponseDto Put([FromBody] CouponDto couponDto)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace CouponAPI.Controllers
 
         //Delete a coupon
         [HttpDelete]
-        public ResponseDto delete(int id)
+        public ResponseDto Delete(int id)
         {
             try
             {

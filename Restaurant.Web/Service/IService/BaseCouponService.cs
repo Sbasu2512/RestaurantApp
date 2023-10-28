@@ -2,7 +2,7 @@
 
 namespace Restaurant.Web.Service.IService
 {
-    public interface BaseCouponService
+    public interface ICouponService
     {
         Task<ResponseDto?> GetCouponAsync(string couponCode);
         Task<ResponseDto?> GetAllCouponAsync();

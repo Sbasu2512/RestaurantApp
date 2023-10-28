@@ -5,7 +5,7 @@ using static Restaurant.Web.Utility.ApiTypeEnum;
 
 namespace Restaurant.Web.Service
 {
-    public class CouponService: BaseCouponService
+    public class CouponService: ICouponService
     {
         private readonly IBaseService _baseService;
         //ctor

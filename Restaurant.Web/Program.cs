@@ -12,7 +12,7 @@ builder.Services.AddHttpClient();
 ApiTypeEnum.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
 
 builder.Services.AddScoped<IBaseService,BaseService>();
-builder.Services.AddScoped<BaseCouponService,CouponService>();
+builder.Services.AddScoped<ICouponService,CouponService>();
 
 var app = builder.Build();
 
