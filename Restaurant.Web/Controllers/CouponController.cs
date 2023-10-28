@@ -24,6 +24,10 @@ namespace Restaurant.Web.Controllers
             {
                 list = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(response.Result));
             }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
             return View(list);
         }
 
@@ -36,6 +40,10 @@ namespace Restaurant.Web.Controllers
                 if(response != null && response.IsSuccess)
                 {
                     return RedirectToAction(nameof(CouponIndex));
+                }
+                else
+                {
+                    TempData["error"] = response?.Message;
                 }
             }
             return View(model);
@@ -50,6 +58,10 @@ namespace Restaurant.Web.Controllers
                 CouponDto? list = JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(response.Result));
                 return View(list);
             }
+            else
+            {
+                TempData["error"] = response?.Message;
+            }
             return NotFound();
         }
         
@@ -61,6 +73,10 @@ namespace Restaurant.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                 return RedirectToAction(nameof(CouponIndex));
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
             }
             return View(couponDto);
         }
