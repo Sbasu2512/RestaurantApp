@@ -123,6 +123,7 @@ namespace CouponAPI.Controllers
 
         //Delete a coupon
         [HttpDelete]
+        [Route("{id:int}")]
         public ResponseDto Delete(int id)
         {
             try
