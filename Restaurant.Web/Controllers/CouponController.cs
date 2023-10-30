@@ -39,6 +39,7 @@ namespace Restaurant.Web.Controllers
 
                 if(response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Coupon Created Successfully!";
                     return RedirectToAction(nameof(CouponIndex));
                 }
                 else
@@ -72,6 +73,7 @@ namespace Restaurant.Web.Controllers
 
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Coupon deleted successfully!";
                 return RedirectToAction(nameof(CouponIndex));
             }
             else
