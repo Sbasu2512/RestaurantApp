@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouponAPI", "CouponAPI\Coup
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Web", "Restaurant.Web\Restaurant.Web.csproj", "{DED4C9DC-6FBE-4B13-A1B7-7AE6F32C2778}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{DED4C9DC-6FBE-4B13-A1B7-7AE6F32C2778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DED4C9DC-6FBE-4B13-A1B7-7AE6F32C2778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DED4C9DC-6FBE-4B13-A1B7-7AE6F32C2778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E6261364-6095-4A0D-8845-DF9AE7E60551} = {6BF8C7AD-D133-4F12-9CCD-EDC40B961715}
 		{DED4C9DC-6FBE-4B13-A1B7-7AE6F32C2778} = {13F2FF5F-3015-434E-8834-21E078645560}
+		{DA23072F-70FB-48EF-A9F9-63EC1EFC6EB2} = {6BF8C7AD-D133-4F12-9CCD-EDC40B961715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DA4E382-A6FF-4615-B70A-D9AD056AC31D}
