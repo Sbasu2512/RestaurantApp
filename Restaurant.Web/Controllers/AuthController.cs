@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Restaurant.Web.Models;
 using Restaurant.Web.Service.IService;
+using Restaurant.Web.Utility;
 
 namespace Restaurant.Web.Controllers
 {
@@ -23,6 +25,14 @@ namespace Restaurant.Web.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            var roleList = new List<SelectListItem>()
+            {
+                new SelectListItem{Text=ApiTypeEnum.RoleAdmin, Value=ApiTypeEnum.RoleAdmin},
+                new SelectListItem{Text=ApiTypeEnum.RoleCustomer, Value=ApiTypeEnum.RoleCustomer}
+            };
+
+            ViewBag.RoleList = roleList;
+
             return View();
         }
 
