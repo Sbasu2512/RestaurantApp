@@ -21,17 +21,17 @@ namespace AuthAPI.Service
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<bool> AssignRole(string email, string roleName)
+        public async Task<bool> AssignRole(string email, string RoleName)
         {
             var user = _db.ApplicationUsers.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
             if(user != null)
             {
-                if(!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult()) 
+                if(!_roleManager.RoleExistsAsync(RoleName).GetAwaiter().GetResult()) 
                 {
                     //create role if it does not exists
-                    _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(RoleName)).GetAwaiter().GetResult();
                 }
-                await _userManager.AddToRoleAsync(user, roleName);
+                await _userManager.AddToRoleAsync(user, RoleName);
                 return true;
             }
             return false;

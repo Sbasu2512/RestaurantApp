@@ -1,4 +1,4 @@
-﻿namespace AuthAPI.Models.Dto
+﻿namespace Restaurant.Web.Models
 {
     public class RegistrationRequestDto
     {

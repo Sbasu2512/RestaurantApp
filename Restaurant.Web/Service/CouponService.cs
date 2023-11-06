@@ -7,6 +7,7 @@ namespace Restaurant.Web.Service
 {
     public class CouponService: ICouponService
     {
+        //getting base service using dependency injection
         private readonly IBaseService _baseService;
         //ctor
         public CouponService(IBaseService baseService)
