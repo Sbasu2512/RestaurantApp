@@ -6,7 +6,7 @@ namespace Restaurant.Web.Service.IService
     {
         Task<ResponseDto?> LoginAsync(LoginRequestDto loginRequestDto);
         Task<ResponseDto?> Register(RegistrationRequestDto registrationRequestDto);
-        Task<ResponseDto?> AssignRoleASync(RegistrationRequestDto registrationRequestDto);
-
+        Task<ResponseDto?> AssignRoleAsync(RegistrationRequestDto registrationRequestDto);
+        Task<ResponseDto> RegisterAsync(RegistrationRequestDto obj);
     }
 }

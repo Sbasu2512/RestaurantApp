@@ -36,6 +36,40 @@ namespace Restaurant.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Register(RegistrationRequestDto obj)
+        {
+            ResponseDto result = await _authService.RegisterAsync(obj);
+            ResponseDto assingRole;
+
+            if (result != null && result.IsSuccess)
+            {
+                if (string.IsNullOrEmpty(obj.RoleName))
+                {
+                    obj.RoleName = ApiTypeEnum.RoleCustomer;
+                }
+                assingRole = await _authService.AssignRoleAsync(obj);
+                if (assingRole != null && assingRole.IsSuccess)
+                {
+                    TempData["success"] = "Registration Successful";
+                    return RedirectToAction(nameof(Login));
+                }
+            }
+            else
+            {
+                TempData["error"] = result.Message;
+            }
+
+            var roleList = new List<SelectListItem>()
+            {
+                new SelectListItem{Text=ApiTypeEnum.RoleAdmin,Value=ApiTypeEnum.RoleAdmin},
+                new SelectListItem{Text=ApiTypeEnum.RoleCustomer,Value=ApiTypeEnum.RoleCustomer},
+            };
+
+            ViewBag.RoleList = roleList;
+            return View(obj);
+        }
+
         [HttpGet]
         public IActionResult Logout()
         {
