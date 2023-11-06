@@ -42,5 +42,18 @@ namespace AuthAPI.Controllers
             return Ok(_responseDto);
         }
 
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRole([FromBody] RegistrationRequestDto model)
+        {
+            var isAssignRoleSuccessful = await _authService.AssignRole(model.Email, model.roleName.ToUpper());
+            if (!isAssignRoleSuccessful)
+            {
+                _responseDto.IsSuccess = false;
+                _responseDto.Message = "Error encountered";
+                return BadRequest(_responseDto);
+            }
+            return Ok(_responseDto);
+        }
+
     }
 }
