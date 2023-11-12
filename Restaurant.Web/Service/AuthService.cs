@@ -12,14 +12,14 @@ namespace Restaurant.Web.Service
         {
             _baseService = baseService;
         }
-        public async Task<ResponseDto?> AssignRoleASync(RegistrationRequestDto registrationRequestDto)
+        public async Task<ResponseDto?> AssignRoleAsync(RegistrationRequestDto registrationRequestDto)
         {
            
                 return await _baseService.SendAsync(new RequestDto()
                 {
                     ApiType = ApiTypeEnum.ApiType.POST,
                     Data = registrationRequestDto,
-                    Url = ApiTypeEnum.CouponAPIBase + "/api/auth/AssignRole"
+                    Url = ApiTypeEnum.AuthAPIBase + "/api/auth/AssignRole"
                 });
             
         }
@@ -30,7 +30,7 @@ namespace Restaurant.Web.Service
             {
                 ApiType = ApiTypeEnum.ApiType.POST,
                 Data = loginRequestDto,
-                Url = ApiTypeEnum.CouponAPIBase + "/api/auth/login"
+                Url = ApiTypeEnum.AuthAPIBase + "/api/auth/login"
             });
         }
 
@@ -40,8 +40,13 @@ namespace Restaurant.Web.Service
             {
                 ApiType = ApiTypeEnum.ApiType.POST,
                 Data = registrationRequestDto,
-                Url = ApiTypeEnum.CouponAPIBase + "/api/auth/register"
+                Url = ApiTypeEnum.AuthAPIBase + "/api/auth/register"
             });
+        }
+
+        Task<ResponseDto> IAuthService.RegisterAsync(RegistrationRequestDto obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

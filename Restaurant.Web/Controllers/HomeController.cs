@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Web.Models;
+using Restaurant.Web.Utility;
 using System.Diagnostics;
 
 namespace Restaurant.Web.Controllers
@@ -18,6 +20,7 @@ namespace Restaurant.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = ApiTypeEnum.RoleAdmin)]
         public IActionResult Privacy()
         {
             return View();
