@@ -81,7 +81,9 @@ namespace CouponAPI.Controllers
         }
 
         //create a new coupon
+        // only an admin user can access these endpoints.
         [HttpPost]
+        [Authorize(Roles ="ADMIN")]
         public ResponseDto Post([FromBody] CouponDto couponDto)
         {
             try
@@ -104,6 +106,7 @@ namespace CouponAPI.Controllers
 
         //Edit a coupon
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Put([FromBody] CouponDto couponDto)
         {
             try
@@ -126,6 +129,7 @@ namespace CouponAPI.Controllers
         //Delete a coupon
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try

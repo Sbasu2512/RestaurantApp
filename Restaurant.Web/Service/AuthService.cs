@@ -20,7 +20,7 @@ namespace Restaurant.Web.Service
                     ApiType = ApiTypeEnum.ApiType.POST,
                     Data = registrationRequestDto,
                     Url = ApiTypeEnum.AuthAPIBase + "/api/auth/AssignRole"
-                });
+                }, withBearer:false);
             
         }
 
@@ -31,22 +31,17 @@ namespace Restaurant.Web.Service
                 ApiType = ApiTypeEnum.ApiType.POST,
                 Data = loginRequestDto,
                 Url = ApiTypeEnum.AuthAPIBase + "/api/auth/login"
-            });
+            }, withBearer: false);
         }
 
-        public async Task<ResponseDto?> Register(RegistrationRequestDto registrationRequestDto)
+        public async Task<ResponseDto?> RegisterAsync(RegistrationRequestDto registrationRequestDto)
         {
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = ApiTypeEnum.ApiType.POST,
                 Data = registrationRequestDto,
                 Url = ApiTypeEnum.AuthAPIBase + "/api/auth/register"
-            });
-        }
-
-        Task<ResponseDto> IAuthService.RegisterAsync(RegistrationRequestDto obj)
-        {
-            throw new NotImplementedException();
+            }, withBearer: false);
         }
     }
 }

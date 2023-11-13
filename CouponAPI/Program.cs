@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
+using System.Reflection.Metadata;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,11 +24,38 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//so swagger can access unauthorized apis
+//we need to do these basic things to add authentication to swagger documentation
+builder.Services.AddSwaggerGen( option =>
+{
+    option.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name="Authorization",
+        Description="Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
+        In=ParameterLocation.Header,
+        Type=SecuritySchemeType.ApiKey,
+        Scheme="Bearer"
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+             new OpenApiSecurityScheme
+        {
+            Reference=new OpenApiReference
+            {
+                Type=ReferenceType.SecurityScheme,
+                Id=JwtBearerDefaults.AuthenticationScheme
+            }
+        }, new string[]{}
+        }
+    });
+});
 
-var secret = builder.Configuration.GetValue<string>("ApiSettings:Secret");
-var issuer = builder.Configuration.GetValue<string>("ApiSettings:Issuer");
-var audience = builder.Configuration.GetValue<string>("ApiSettings:Audience");
+var settingsSection = builder.Configuration.GetSection("ApiSettings");
+
+var secret = settingsSection.GetValue<string>("Secret");
+var issuer = settingsSection.GetValue<string>("Issuer");
+var audience = settingsSection.GetValue<string>("Audience");
 
 var key = Encoding.ASCII.GetBytes(secret);
 
